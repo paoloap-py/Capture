@@ -12,5 +12,11 @@
     ],
     "captured_at": "2026-02-02T06:02:38.110734",
     "used_for": []
+  },
+  {
+    "id": "6b138dfb",
+    "url": "https://www.reddit.com/r/Python/comments/1qqq872/python_crash_course_notebook_for_data_engineering/",
+    "notes": "Adapt this for AI engineers - create a similar crash course notebook but focused on AI/ML stack",
+    "captured_at": "2026-02-02T06:20:16.124881"
   }
 ]
