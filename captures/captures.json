@@ -1,0 +1,16 @@
+[
+  {
+    "id": "3b0d4f75",
+    "url": "https://www.reddit.com/r/Python/comments/1qqq872/python_crash_course_notebook_for_data_engineering/",
+    "title": "Python Crash Course Notebook for Data Engineering",
+    "notes": "A Jupyter notebook format crash course teaching Python fundamentals tailored specifically for data engineers. IDEA: Replicate this concept for AI Engineers - create a Python/ML crash course notebook covering: numpy, pandas, pytorch/tensorflow basics, transformers, LangChain, vector DBs, prompt engineering, API calls to LLMs, fine-tuning basics. Could perform well on LinkedIn/Medium as AI engineering is hot right now.",
+    "tags": [
+      "ai",
+      "content-idea",
+      "jupyter",
+      "tutorial"
+    ],
+    "captured_at": "2026-02-02T06:02:38.110734",
+    "used_for": []
+  }
+]
