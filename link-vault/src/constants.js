@@ -14,7 +14,7 @@ export const GIST_CONFIG = {
 };
 
 // Current versions for seed management
-export const SEED_VERSION = 3;
+export const SEED_VERSION = 4;
 export const CAT_VERSION = 1;
 
 // Default categories
@@ -62,169 +62,160 @@ export const FORMATS = [
 // Seed links with category migrations applied
 // - security links → controversial
 // - reference links → tools-workflows
-// - adapt → controversial
+// - adapt/remix → controversial
 // - think-pieces → opinion-prediction
 export const SEED_LINKS = [
   {
     id: 'seed-1',
-    url: 'https://arstechnica.com/security/2024/03/hackers-are-weaponizing-notepad/',
-    title: 'Hackers are weaponizing Notepad++ to spread malware',
+    url: 'https://github.com/langchain-ai/deepagents',
+    title: 'Deep Agents — LangChain/LangGraph Agent Harness',
     category: 'controversial',
-    formats: ['linkedin'],
+    formats: ['linkedin', 'medium', 'tools'],
     curated: false,
-    createdAt: Date.now() - 17 * 86400000
+    createdAt: Date.now() - 18 * 86400000
   },
   {
     id: 'seed-2',
-    url: 'https://www.theverge.com/2024/3/ai-chatbots-making-things-up',
-    title: 'AI chatbots are still confidently making things up',
+    url: 'https://notepad-plus-plus.org/news/hijacked-incident-info-update/',
+    title: 'Notepad++ Hijacked by State-Sponsored Hackers',
     category: 'controversial',
-    formats: ['opinion'],
-    curated: false,
-    createdAt: Date.now() - 16 * 86400000
+    formats: ['linkedin'],
+    curated: true,
+    createdAt: Date.now() - 17 * 86400000
   },
   {
     id: 'seed-3',
-    url: 'https://techcrunch.com/2024/03/remote-work-productivity-myth/',
-    title: 'The remote work productivity myth needs to die',
-    category: 'controversial',
-    formats: ['linkedin', 'opinion'],
-    curated: false,
-    createdAt: Date.now() - 15 * 86400000
+    url: 'https://www.reddit.com/r/artificial/comments/1qqdmoq/moltbot_is_exploding_100k_github_stars_in_weeks/',
+    title: 'OpenClaw (Moltbot) Explodes to 100K+ GitHub Stars',
+    category: 'trending-viral',
+    formats: ['linkedin'],
+    curated: true,
+    createdAt: Date.now() - 16 * 86400000
   },
   {
     id: 'seed-4',
-    url: 'https://www.notion.so/templates/ai-content-pipeline',
-    title: 'AI Content Pipeline Template for Notion',
-    category: 'tools-workflows',
-    formats: ['tools'],
-    curated: false,
-    createdAt: Date.now() - 14 * 86400000
+    url: 'https://www.reddit.com/r/Python/comments/1qqq872/python_crash_course_notebook_for_data_engineering/',
+    title: 'Python Crash Course Notebook for Data Engineering → Adapt for AI Engineers',
+    category: 'controversial',
+    formats: ['medium'],
+    curated: true,
+    createdAt: Date.now() - 15 * 86400000
   },
   {
     id: 'seed-5',
-    url: 'https://www.cursor.com/blog/ai-coding-workflows',
-    title: 'How we use Cursor AI for 10x coding productivity',
-    category: 'tools-workflows',
-    formats: ['tools', 'case-study'],
-    curated: false,
-    createdAt: Date.now() - 13 * 86400000
+    url: 'https://martinalderson.com/posts/two-kinds-of-ai-users-are-emerging/',
+    title: 'Two Kinds of AI Users Are Emerging — The Gap Is Astonishing',
+    category: 'opinion-prediction',
+    formats: ['linkedin', 'medium'],
+    curated: true,
+    createdAt: Date.now() - 14 * 86400000
   },
   {
     id: 'seed-6',
-    url: 'https://lilianweng.github.io/posts/2023-06-23-agent/',
-    title: 'LLM Powered Autonomous Agents - Lilian Weng',
+    url: 'https://www.linkedin.com/posts/andreashorn1_%F0%9D%97%96%F0%9D%97%B9%F0%9D%97%AE%F0%9D%98%82%F0%9D%97%B1%F0%9D%97%B2-%F0%9D%97%96%F0%9D%97%BC%F0%9D%97%B1%F0%9D%97%B2-%F0%9D%97%BC%F0%9D%97%BB-%F0%9D%98%80%F0%9D%98%81%F0%9D%97%B2%F0%9D%97%BF%F0%9D%97%BC%F0%9D%97%B6%F0%9D%97%B1-activity-7423277641064955904-vkxU',
+    title: 'Andreas Horn — Claude Code on Steroid',
     category: 'tools-workflows',
-    formats: ['tools'],
-    curated: false,
-    createdAt: Date.now() - 12 * 86400000
+    formats: ['linkedin'],
+    curated: true,
+    createdAt: Date.now() - 13 * 86400000
   },
   {
     id: 'seed-7',
-    url: 'https://www.wired.com/story/ai-will-replace-middle-management/',
-    title: 'AI will replace middle management before it replaces workers',
-    category: 'opinion-prediction',
-    formats: ['linkedin', 'opinion'],
-    curated: false,
-    createdAt: Date.now() - 11 * 86400000
+    url: 'https://www.linkedin.com/posts/sebastianraschka_its-been-a-while-since-i-did-an-llm-architecture-activity-7422670592077668352-T0hU',
+    title: 'Sebastian Raschka — The Big LLM Architecture Comparison (11 Models of 2025)',
+    category: 'tools-workflows',
+    formats: ['linkedin', 'medium'],
+    curated: true,
+    createdAt: Date.now() - 12 * 86400000
   },
   {
     id: 'seed-8',
-    url: 'https://www.fastcompany.com/2024/03/the-death-of-the-entry-level-job/',
-    title: 'The death of the entry-level job is here',
-    category: 'opinion-prediction',
-    formats: ['opinion'],
-    curated: false,
-    createdAt: Date.now() - 10 * 86400000
+    url: 'https://www.linkedin.com/posts/searchguy_softwarearchitecture-antigravity-gemini-activity-7422885766323650561-c5eX',
+    title: 'SearchGuy — Software Architecture with Google Antigravity + Gemini',
+    category: 'tools-workflows',
+    formats: ['linkedin'],
+    curated: true,
+    createdAt: Date.now() - 11 * 86400000
   },
   {
     id: 'seed-9',
-    url: 'https://oneusefulthing.substack.com/p/the-homework-apocalypse',
-    title: 'The Homework Apocalypse - Ethan Mollick',
-    category: 'opinion-prediction',
-    formats: ['medium', 'opinion'],
-    curated: false,
-    createdAt: Date.now() - 9 * 86400000
+    url: 'https://www.linkedin.com/posts/addyosmani_ai-programming-softwareengineering-activity-7423836698100416513-H0W4',
+    title: 'Addy Osmani — Context Engineering & LLM Coding Workflow for 2026',
+    category: 'controversial',
+    formats: ['linkedin', 'medium'],
+    curated: true,
+    createdAt: Date.now() - 10 * 86400000
   },
   {
     id: 'seed-10',
-    url: 'https://www.tiktok.com/@levelsio/video/12345',
-    title: 'Levels.io builds $1M SaaS in 30 days with AI',
-    category: 'trending-viral',
-    formats: ['case-study'],
-    curated: false,
-    createdAt: Date.now() - 8 * 86400000
+    url: 'https://vercel.com/blog/we-removed-80-percent-of-our-agents-tools',
+    title: 'Vercel — We Removed 80% of Our Agent\'s Tools (and It Got Better)',
+    category: 'controversial',
+    formats: [],
+    curated: true,
+    createdAt: Date.now() - 9 * 86400000
   },
   {
     id: 'seed-11',
-    url: 'https://arxiv.org/abs/2312.00001',
-    title: 'NeurIPS 2023 Best Paper: Scaling Laws for AI',
+    url: 'https://www.linkedin.com/posts/ashpreetbedi_dash-open-sourcing-openais-in-house-data-share-7424097870993141760-HHTC',
+    title: 'Dash — Open-Sourcing OpenAI\'s In-House Data Agent',
     category: 'tools-workflows',
-    formats: ['tools'],
-    curated: false,
-    createdAt: Date.now() - 7 * 86400000
+    formats: [],
+    curated: true,
+    createdAt: Date.now() - 8 * 86400000
   },
   {
     id: 'seed-12',
-    url: 'https://twitter.com/sama/status/12345',
-    title: 'Sam Altman: GPT-5 will be the last model before AGI',
-    category: 'trending-viral',
-    formats: ['opinion'],
-    curated: false,
-    createdAt: Date.now() - 6 * 86400000
+    url: 'https://www.linkedin.com/posts/kavishka-abeywardana-01b891214_neurips-2025-best-paper-gated-attention-share-7423710303961444352-KIO0',
+    title: 'NeurIPS 2025 Best Paper — Gated Attention for LLMs',
+    category: 'tools-workflows',
+    formats: [],
+    curated: true,
+    createdAt: Date.now() - 7 * 86400000
   },
   {
     id: 'seed-13',
-    url: 'https://www.linkedin.com/posts/justinwelsh_content-creator-activity-12345',
-    title: 'Justin Welsh: How I built a $5M one-person business',
-    category: 'trending-viral',
+    url: 'https://www.linkedin.com/posts/michaelhoogkamer_policyasgraph-datagovernance-ai-share-7423702462160797696-b78J',
+    title: 'Policy-as-Graph — Data Governance Case Study',
+    category: 'controversial',
     formats: ['linkedin', 'case-study'],
-    curated: false,
-    createdAt: Date.now() - 5 * 86400000
+    curated: true,
+    createdAt: Date.now() - 6 * 86400000
   },
   {
     id: 'seed-14',
-    url: 'https://openai.com/research/data-agents',
-    title: 'OpenAI Data Agents: Autonomous Data Analysis',
+    url: 'https://www.linkedin.com/posts/simeon-emanuilov_gliner2-extracts-structured-data-without-share-7422520829768327169-6RDv',
+    title: 'GLiNER2 — Structured Data Extraction Without LLMs',
     category: 'tools-workflows',
-    formats: ['tools'],
-    curated: false,
-    createdAt: Date.now() - 4 * 86400000
+    formats: ['linkedin', 'tools'],
+    curated: true,
+    createdAt: Date.now() - 5 * 86400000
   },
   {
     id: 'seed-15',
-    url: 'https://www.youtube.com/watch?v=abc123',
-    title: 'Why senior developers are mass quitting (viral thread)',
-    category: 'trending-viral',
-    formats: ['opinion'],
-    curated: false,
-    createdAt: Date.now() - 3 * 86400000
+    url: 'https://www.linkedin.com/posts/debeurre_inside-openais-in-house-data-agent-activity-7424150096453197824-1tJf',
+    title: 'Inside OpenAI\'s In-House Data Agent — Breakdown',
+    category: 'tools-workflows',
+    formats: ['linkedin', 'medium'],
+    curated: true,
+    createdAt: Date.now() - 4 * 86400000
   },
   {
     id: 'seed-16',
-    url: 'https://hbr.org/2024/03/why-ai-projects-fail',
-    title: 'Why 85% of AI Projects Fail - Harvard Business Review',
-    category: 'controversial',
-    formats: ['case-study', 'opinion'],
-    curated: false,
-    createdAt: Date.now() - 2 * 86400000
+    url: 'https://www.linkedin.com/feed/update/urn:li:activity:7423378505998106624',
+    title: 'The Real Engineering Skill — Knowing When to Take the AI Handoff',
+    category: 'opinion-prediction',
+    formats: ['linkedin', 'opinion'],
+    curated: true,
+    createdAt: Date.now() - 3 * 86400000
   },
   {
     id: 'seed-17',
-    url: 'https://www.raycast.com/blog/ai-extensions-tutorial',
-    title: 'Building AI Extensions for Raycast',
-    category: 'tools-workflows',
-    formats: ['tools'],
-    curated: false,
-    createdAt: Date.now() - 1 * 86400000
-  },
-  {
-    id: 'seed-18',
-    url: 'https://stratechery.com/2024/the-ai-productivity-paradox/',
-    title: 'The AI Productivity Paradox - Ben Thompson',
-    category: 'opinion-prediction',
-    formats: ['medium', 'opinion'],
-    curated: false,
-    createdAt: Date.now()
+    url: 'https://www.linkedin.com/feed/update/urn:li:activity:7403864074851442688',
+    title: 'Gemini Day 2 — When to Graduate from AI Studio to Vertex AI',
+    category: 'controversial',
+    formats: ['linkedin'],
+    curated: true,
+    createdAt: Date.now() - 2 * 86400000
   }
 ];
