@@ -14,11 +14,53 @@ import SettingsPanel from './components/SettingsPanel';
 import BulkBar from './components/BulkBar';
 import FilterBar from './components/FilterBar';
 
+// Initialize state from localStorage (runs once, synchronously)
+function getInitialState() {
+  const savedData = localStorage.getItem(STORAGE_KEYS.DATA);
+  const savedSeedVersion = localStorage.getItem(STORAGE_KEYS.SEED_VERSION);
+  const savedCatVersion = localStorage.getItem(STORAGE_KEYS.CAT_VERSION);
+  const savedToken = localStorage.getItem(STORAGE_KEYS.GH_TOKEN);
+
+  let loadedLinks = [];
+  let loadedCategories = DEFAULT_CATEGORIES;
+
+  if (savedData) {
+    try {
+      const parsed = JSON.parse(savedData);
+      loadedLinks = parsed.links || [];
+      loadedCategories = parsed.categories || DEFAULT_CATEGORIES;
+    } catch (e) {
+      console.error('Failed to parse saved data:', e);
+    }
+  }
+
+  // Inject new seed links if version bumped
+  const needsSeedUpdate = !savedSeedVersion || parseInt(savedSeedVersion) < SEED_VERSION;
+  if (needsSeedUpdate) {
+    const existingIds = new Set(loadedLinks.map(l => l.id));
+    const newSeeds = SEED_LINKS.filter(s => !existingIds.has(s.id));
+    loadedLinks = [...loadedLinks, ...newSeeds];
+    localStorage.setItem(STORAGE_KEYS.SEED_VERSION, String(SEED_VERSION));
+  }
+
+  // Reset categories if version bumped
+  const needsCatUpdate = !savedCatVersion || parseInt(savedCatVersion) < CAT_VERSION;
+  if (needsCatUpdate) {
+    loadedCategories = DEFAULT_CATEGORIES;
+    localStorage.setItem(STORAGE_KEYS.CAT_VERSION, String(CAT_VERSION));
+  }
+
+  return { loadedLinks, loadedCategories, savedToken };
+}
+
 function App() {
+  // Get initial state synchronously (avoids Strict Mode timing issues)
+  const [initialState] = useState(getInitialState);
+
   // Core state
-  const [links, setLinks] = useState([]);
-  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
-  const [ghToken, setGhToken] = useState('');
+  const [links, setLinks] = useState(initialState.loadedLinks);
+  const [categories, setCategories] = useState(initialState.loadedCategories);
+  const [ghToken, setGhToken] = useState(initialState.savedToken || '');
 
   // UI state
   const [showSettings, setShowSettings] = useState(false);
@@ -32,7 +74,7 @@ function App() {
   // Add link form state
   const [newUrl, setNewUrl] = useState('');
   const [newTitle, setNewTitle] = useState('');
-  const [newCategory, setNewCategory] = useState('');
+  const [newCategory, setNewCategory] = useState(initialState.loadedCategories[0]?.id || '');
   const [newFormats, setNewFormats] = useState([]);
 
   // Sync state
@@ -44,55 +86,6 @@ function App() {
   const [newCatName, setNewCatName] = useState('');
   const [newCatEmoji, setNewCatEmoji] = useState('');
   const [newCatColor, setNewCatColor] = useState('#FF6B35');
-
-  // Initialize data from localStorage
-  useEffect(() => {
-    const savedData = localStorage.getItem(STORAGE_KEYS.DATA);
-    const savedSeedVersion = localStorage.getItem(STORAGE_KEYS.SEED_VERSION);
-    const savedCatVersion = localStorage.getItem(STORAGE_KEYS.CAT_VERSION);
-    const savedToken = localStorage.getItem(STORAGE_KEYS.GH_TOKEN);
-
-    let loadedLinks = [];
-    let loadedCategories = DEFAULT_CATEGORIES;
-
-    if (savedData) {
-      try {
-        const parsed = JSON.parse(savedData);
-        loadedLinks = parsed.links || [];
-        loadedCategories = parsed.categories || DEFAULT_CATEGORIES;
-      } catch (e) {
-        console.error('Failed to parse saved data:', e);
-      }
-    }
-
-    // Inject new seed links if version bumped
-    const needsSeedUpdate = !savedSeedVersion || parseInt(savedSeedVersion) < SEED_VERSION;
-    if (needsSeedUpdate) {
-      const existingIds = new Set(loadedLinks.map(l => l.id));
-      const newSeeds = SEED_LINKS.filter(s => !existingIds.has(s.id));
-      loadedLinks = [...loadedLinks, ...newSeeds];
-      localStorage.setItem(STORAGE_KEYS.SEED_VERSION, String(SEED_VERSION));
-    }
-
-    // Reset categories if version bumped
-    const needsCatUpdate = !savedCatVersion || parseInt(savedCatVersion) < CAT_VERSION;
-    if (needsCatUpdate) {
-      loadedCategories = DEFAULT_CATEGORIES;
-      localStorage.setItem(STORAGE_KEYS.CAT_VERSION, String(CAT_VERSION));
-    }
-
-    setLinks(loadedLinks);
-    setCategories(loadedCategories);
-
-    if (savedToken) {
-      setGhToken(savedToken);
-    }
-
-    // Set default category for new links
-    if (loadedCategories.length > 0) {
-      setNewCategory(loadedCategories[0].id);
-    }
-  }, []);
 
   // Save to localStorage whenever links or categories change
   useEffect(() => {
