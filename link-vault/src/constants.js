@@ -14,7 +14,7 @@ export const GIST_CONFIG = {
 };
 
 // Current versions for seed management
-export const SEED_VERSION = 4;
+export const SEED_VERSION = 5;
 export const CAT_VERSION = 1;
 
 // Default categories
@@ -217,5 +217,14 @@ export const SEED_LINKS = [
     formats: ['linkedin'],
     curated: true,
     createdAt: Date.now() - 2 * 86400000
+  },
+  {
+    id: 'seed-18',
+    url: 'https://www.linkedin.com/feed/update/urn:li:activity:7421205567739740161',
+    title: 'LinkedIn Tool Post',
+    category: 'tools-workflows',
+    formats: ['linkedin'],
+    curated: false,
+    createdAt: Date.now() - 1 * 86400000
   }
 ];
