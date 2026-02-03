@@ -14,7 +14,7 @@ export const GIST_CONFIG = {
 };
 
 // Current versions for seed management
-export const SEED_VERSION = 5;
+export const SEED_VERSION = 6;
 export const CAT_VERSION = 1;
 
 // Default categories
