@@ -50,6 +50,14 @@ function getInitialState() {
     localStorage.setItem(STORAGE_KEYS.CAT_VERSION, String(CAT_VERSION));
   }
 
+  // Save immediately to persist seeds (avoids Strict Mode race condition)
+  if (needsSeedUpdate || needsCatUpdate) {
+    localStorage.setItem(STORAGE_KEYS.DATA, JSON.stringify({
+      links: loadedLinks,
+      categories: loadedCategories
+    }));
+  }
+
   return { loadedLinks, loadedCategories, savedToken };
 }
 
